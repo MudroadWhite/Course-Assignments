@@ -1,0 +1,301 @@
+/* Add a black background color to the top navigation */
+.nav {
+    background-color: #006800;
+    overflow: hidden;
+    padding: 0px;
+}
+
+/* Style the links inside the navigation bar */
+.nav a {
+    right: 0;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+/* Change the color of links on hover */
+.nav a:hover {
+    background-color: #ddd;
+    color: black;
+    border-radius: 15px;
+}
+
+#button {
+    background-color: cornflowerblue;
+    border-radius: 15px;
+}
+
+#dash_button {
+    background-color: cornflowerblue;
+    border-radius: 15px;
+}
+
+/* Add a color to the active/current link */
+.nav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.nav li {
+    display: inline-block;
+    float: right;
+    top: 50%;
+}
+
+.logo{
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+
+.mainContent {
+    alignment: center;
+    align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 25px;
+    background-color: cornflowerblue;
+    border-radius: 15px;
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+
+
+.adminCreateEvent, .recipientAddRequest, .donorFunctions {
+    alignment: center;
+    align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    background-color: cornflowerblue;
+    border-radius: 15px;
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+input {
+display:block;
+outline: none;
+border-radius: 5px;
+border-style: none;
+height: 45px;
+width: 218px;
+padding:0 16px;
+font-family: Helvetica Neue;
+font-size: 18px;
+background-color: rgb(250,250,250);
+margin:0 auto;
+border:solid;
+}
+
+.rad {
+display:inline;
+outline: none;
+border-radius: 5px;
+border-style: none;
+height: 15px;
+width: 15px;
+padding:0 16px;
+font-family: Helvetica Neue;
+font-size: 12px;
+background-color: rgb(250,250,250);
+margin:0 auto;
+border:solid;
+}
+
+label {
+display: block;
+text-align: center;
+display:block;
+height: 45px;
+font-family: Helvetica Neue;
+font-size: 18px;
+}
+
+#eventButton, #requestButton, #deleteButton, #pledgeButton, #donationButton, .optionButton{
+    background-color: #006800;
+    color: white;
+    text-decoration: none;
+    padding: .5em 0.5em 0.5em 0.5em;
+    border-radius: 7px;
+    font-size: 18px;
+    margin-left: 25px;
+}
+
+#eventButton:hover, #requestButton:hover, #deleteButton:hover, #requestButton:hover, .optionButton:hover{
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 7px;
+}
+
+#button2 {
+    text-align: center;
+    alignment: center;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    font-size: 28px;
+}
+
+#button2 a{
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 7px;
+}
+
+#button2 a:hover{
+    color: black;
+    background-color: gray;
+    text-decoration: none;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 7px;
+}
+
+#button3 {
+    text-align: center;
+    alignment: center;
+    margin-top: 25px;
+    font-size: 28px;
+}
+
+#button3:hover{
+    color: black;
+    background-color: gray;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+.pB {
+padding-bottom: 30px;
+}
+
+.pB2 {
+    width: 150px;
+    margin:10px;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+.alertGood {
+  padding: 20px;
+  background-color: #42F13C; /* Green */
+  color: black;
+  margin-bottom: 15px;
+}
+
+#eventDesc {
+    width: 520px;
+}
+
+#events, #openRequests, #expiredRequests, #pledges, #donations {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#events td, #events th, #openRequests td, #expiredRequests td, #openRequests th, #expiredRequests th, #pledges th, #pledges td, #donations th, #donations td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#events tr:nth-child(even), #openRequests tr:nth-child(even), #expiredRequests tr:nth-child(even), #pledges tr:nth-child(even), #donations tr:nth-child(even){background-color: #f2f2f2;}
+#events tr:nth-child(odd), #openRequests tr:nth-child(odd), #expiredRequests tr:nth-child(odd), #pledges tr:nth-child(odd), #donations tr:nth-child(odd){background-color: #C0C0C0;}
+
+#events tr:hover {background-color: #ddd;}
+
+#events th, #openRequests th, #expiredRequests th, #pledges th, #donations th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #006800;
+  color: white;
+}
+
+#events a, #openRequests a, #expiredRequests a, #pledges a, #donations a{
+    text-decoration: none;
+    color: black;
+}
+
+.pop {
+    background-color: #D3D3D3;
+    border-radius: 7px;
+}
+
+.actionButton {
+    text-align: center;
+    text-decoration: none;
+}
+
+.actionButton a{
+    background-color: #006800;
+        border-radius: 3px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-family: Helvetica Neue;
+        font-size: 35px;
+        padding: 5px 3px 5px 3px;
+}
+
+.actionButton a:hover {
+    background-color: #ddd;
+    color: black;
+    border-radius: 3px;
+}
+
+.buttonList{
+    width: 100%;
+}
+
+.buttonList td{
+    align: center;
+    alignment: center;
+}
+
+.dropDown {
+    align: center;
+    alignment: center;
+    border-radius: 7px;
+    height: 45px;
+    width: 218px;
+    padding:0 16px;
+    font-family: Helvetica Neue;
+    font-size: 18px;
+    background-color: rgb(250,250,250);
+    border: solid;
+}
+
+.approve, .donate {
+    background-color: #42F13C;
+}
+
+.reject {
+    background-color: #f44336;
+}
+
+.edit {
+    background-color: #ffff00;
+}
+
+.success {
+    background-color: green;
+    font-size: 18px;
+    text-align: center;
+}

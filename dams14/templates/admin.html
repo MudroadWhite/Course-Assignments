@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation"><a href="/showSignIn" id="signin">Sign In</a>
+            </li>
+            <li role="presentation"  id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        <h1>Welcome to Admin Dashboard, {{ session['name'] }}</h1>
+    </div>
+
+    <div class="adminCreateEvent">
+        <h1>Admin Options</h1>
+        <div role="presentation">
+            <a href="addEvent" id="eventButton"> Add Event</a>
+            <a href="editEvent" id="eventButton"> Edit Event</a>
+            <a href="deleteEvent" id="eventButton"> Delete Event</a>
+            <a href="approveEvent" id="requestButton">Manage Pending Events</a>
+            <br><br><br>
+            <a href="editRequestEvent" id="eventButton">Edit Request</a>
+            <a href="adminDeleteRequestEvent" id="eventButton">Delete Request</a>
+            <a href="donationMatch" id="eventButton">Match Donations</a>
+            <a href="donationUnmatch" id="eventButton">Unmatch Donations</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

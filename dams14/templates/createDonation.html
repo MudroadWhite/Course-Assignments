@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a Donation</title>
+
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation"><a href="/showSignIn" id="signin">Sign In</a>
+            </li>
+            <li role="presentation"  id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        <h1 align="center">Create Donation</h1>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+            <h3>Open Requests:</h3>
+            <div class="table">
+                <table id="pledges">
+                    <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Event Type</th>
+                        <th>Amount (Dollars)</th>
+                        <th>Amount Delivered</th>
+                        <th>Materials</th>
+                        <th>Materials Delivered</th>
+                        <th>Human Resources</th>
+                        <th>Human Resources Delivered</th>
+                        <th>Zip Code</th>
+                        <th>Make a Donation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row[10] }}</td>
+                        <td>{{ row[9] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6] }}</td>
+                        <td>{{ row[7] }}</td>
+                        <td>{{ row[8] }}</td>
+                        <td><a href="/makeDonation/{{ row[1] }}" class = "donate">Donate</a> </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

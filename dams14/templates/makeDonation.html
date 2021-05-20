@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Request</title>
+
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation"><a href="/showSignIn" id="signin">Sign In</a>
+            </li>
+            <li role="presentation"  id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        <h1 align="center">Make the Donation</h1>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <div class="pB">
+                <label for="myZip">Zipcode:</label>
+                <p align="center">If no zipcode is specified, pledge will be available for all open requests.</p>
+                <input type="text" placeholder="Zipcode" name="myZip" id="myZip" pattern="[0-9]{5}" maxlength="5" value={{ session['zip'] }}>
+            </div>
+            <div class="pB">
+                <label for="dollar">Dollar Amount to be Sent:</label>
+                <input type="text" placeholder="0" name="dollar" id="dollar" pattern="[0-9]+">
+            </div>
+            <div class="pB">
+                <label for="human">Human Resources to Donate:</label>
+                <input type="text" placeholder="5 Brick Layers" name="human" id="human">
+            </div>
+            <div class="pB">
+                <label for="mats">Materials to Donate:</label>
+                <input type="text" placeholder="100 Pounds of Concrete" name="mats" id="mats">
+            </div>
+            <input type="submit" id="button3" value="Submit Donation">
+        </form>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

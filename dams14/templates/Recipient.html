@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipient</title>
+
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation"><a href="/showSignIn" id="signin">Sign In</a>
+            </li>
+            <li role="presentation"  id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alertGood">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1>Welcome to Recipient Dashboard, {{ session['name'] }}</h1>
+    </div>
+
+    <div class="recipientAddRequest">
+        <h1>My Requests</h1>
+        <div role="presentation">
+            <a href="createRequest" id="requestButton"> Make a Request</a>
+            <a href="deleteRequest" id="deleteButton"> Delete a Request</a>
+            <a href="requestEvent" id="eventButton"> Request Event Creation</a>
+            <a href="/expireRequest" id="expireButton" class="optionButton"> Expire Request</a>
+        </div>
+        <h3>Open Requests:</h3>
+        <div class="table">
+            <table id="openRequests">
+                <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Amount Requested (Dollars)</th>
+                    <th>Amount Received (Dollars)</th>
+                    <th>Materials Requested</th>
+                    <th>Materials Received (Y/N)</th>
+                    <th>Human Resources Requested</th>
+                    <th>Human Resources Received (Y/N)</th>
+                    <th>Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in data %}
+                    {% if row[10] == 0 %}
+                        <tr>
+                            <td>{{ row[11] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>{% if row[6] == 0 %}No{% else %}Yes{% endif %}</td>
+                            <td>{{ row[7] }}</td>
+                            <td>{% if row[8] == 0 %}No{% else %}Yes{% endif %}</td>
+                            <td><a href="/editRequest/{{ row[1] }}" class = "edit">Edit</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Expired Requests:</h3>
+        <div class="table">
+            <table id="expiredRequests">
+                <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Amount Requested (Dollars)</th>
+                    <th>Amount Received (Dollars)</th>
+                    <th>Materials Requested</th>
+                    <th>Materials Received (Y/N)</th>
+                    <th>Human Resources Requested</th>
+                    <th>Human Resources Received (Y/N)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in data %}
+                {% if row[10] == 1 %}
+                <tr>
+                    <td>{{ row[11] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>{{ row[5] }}</td>
+                    <td>{% if row[6] == 0 %}No{% else %}Yes{% endif %}</td>
+                    <td>{{ row[7] }}</td>
+                    <td>{% if row[8] == 0 %}No{% else %}Yes{% endif %}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

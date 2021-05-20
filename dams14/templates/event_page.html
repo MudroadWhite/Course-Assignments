@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Page</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation" id="signin"><a href="/showSignIn">Sign In</a>
+            </li>
+            <li role="presentation" id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        <div class="pop">
+            <h1 align="center">{{ data[3]}}</h1>
+            <h3 align="center">{{ data[1] }}</h3>
+        </div>
+        <h3>Location: {{ data[2] }}</h3><p>
+        <h3>Description:</h3>
+        <div class="pop">
+            <p>{{ data[4] }}</p>
+        </div>
+        <table class="buttonList">
+            <tr>
+                <td><div class="actionButton"><a {% if session['role'] == 'recipient' %}href="/createRequest"{% elif session['role'] == 'admin' %}href="/createRequest" {% else %}href="/showSignUp"{% endif %} id="request">Request Help</a></div></td>
+                <td><div class="actionButton"><a href="#" class="actionButton">Donate</a></div></td>
+                <td><div class="actionButton"><a href="/showSearchPage" class="actionButton">Back to Events</a></div></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

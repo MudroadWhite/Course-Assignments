@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <link href="../static/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation"><a href="/showSignIn" id="signin">Sign In</a>
+            </li>
+            <li role="presentation"  id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        <h1 align="center">Sign Up</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <div class="pB">
+                <label for="email">*First Name:</label>
+                {% if data[0] != None %}
+                    <input type="text" placeholder="First Name" name="fn" id="fn" value={{ data[0] }} required>
+                {% else %}
+                    <input type="text" placeholder="First Name" name="fn" id="fn" required>
+                {% endif %}
+            </div>
+            <div class="pB">
+                <label for="email">*Last Name:</label>
+                {% if data[1] != None %}
+                    <input type="text" placeholder="Last Name" name="ln" id="ln" value={{ data[1] }} required>
+                {% else %}
+                    <input type="text" placeholder="Last Name" name="ln" id="ln" required>
+                {% endif %}
+            </div>
+            <div class="pB">
+                <label for="email">*Email:</label>
+                {% if data[2] != None %}
+                    <input type="email" placeholder="john-doe@email.com" name="email" id="email" value={{ data[2] }} required>
+                {% else %}
+                    <input type="email" placeholder="john-doe@email.com" name="email" id="email" required>
+                {% endif %}
+            </div>
+            <div class="pB">
+                <label for="email">*Confirm Email:</label>
+                {% if data[3] != None %}
+                    <input type="email" placeholder="john-doe@email.com" name="conf_email" id="conf_email" value={{ data[3] }} required>
+                {% else %}
+                    <input type="email" placeholder="john-doe@email.com" name="conf_email" id="conf_email" required>
+                {% endif %}
+            </div>
+            <div class="pB">
+                <label for="psw">*Password: (Must be 8 characters with at least 1 uppercase, 1 lowercase, and 1 number)</label>
+                {% if data[4] != None %}
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value={{ data[4] }} required>
+                {% else %}
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                {% endif %}
+            </div>
+            <div class="pB">
+                <label for="conf_psw">*Confirm Password:</label>
+                {% if data[5] != None %}
+                    <input type="password" placeholder="Enter Password" name="conf_psw" id="conf_psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value={{ data[5] }} required>
+                {% else %}
+                    <input type="password" placeholder="Enter Password" name="conf_psw" id="conf_psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                {% endif %}
+            </div>
+            <div class = "pB">
+                <div align="center">
+                    <p>Account Type:</p><br>
+                    <label for="recipient" class="rad">Recipient</label>
+                    <input type="radio" id="recipient" name="role" value="recipient" class="rad" checked>
+                    <label for="donor" class="rad">Donor</label>
+                    <input type="radio" id="donor" name="role" value="donor" class="rad">
+                </div>
+            </div>
+            <div class="pB">
+                <label for="zip">*ZIP Code:</label>
+                {% if data[6] != None %}
+                    <input type="text" placeholder="00000" pattern="[0-9]{5}" maxlength="5" name="zip" id="zip" value={{ data[6] }} required>
+                {% else %}
+                    <input type="text" placeholder="00000" pattern="[0-9]{5}" maxlength="5" name="zip" id="zip" required>
+                {% endif %}
+            </div>
+            <input type="submit" id="button3" value="Sign Up">
+        </form>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

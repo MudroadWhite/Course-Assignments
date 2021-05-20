@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addEditedEvent</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <link href="../static/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation"><a href="/showSignIn" id="signin">Sign In</a>
+            </li>
+            <li role="presentation"  id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        <h1 align="center">Edit Event</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" >
+            <div class="pB" align="center">
+                <label for="eventType">Event Type:</label>
+                <select name="eventType" id="eventType" class="dropDown" required>
+                    <option>Earthquake</option>
+                    <option>Volcanic Eruption</option>
+                    <option>Landslide</option>
+                    <option>Drought/Famine</option>
+                    <option>Strong Winds</option>
+                    <option>Severe Storm</option>
+                    <option>Flood</option>
+                    <option>Extreme Temperature</option>
+                    <option>Lightning Strike</option>
+                    <option>Wildfire</option>
+                    <option selected>{{ data[1] }}</option>
+                </select>
+            </div>
+            <div class="pB">
+                <label for="eventZip">Event Zipcode:</label>
+                <input type="text" placeholder="Event Zipcode" name="eventZip" id="eventZip" required value="{{ data[2] }}">
+            </div>
+            <div class="pB">
+                <label for="eventTitle">Event Title:</label>
+                <input type="text" placeholder="Event Title" name="eventTitle" id="eventTitle" required value="{{ data[3] }}">
+            </div>
+            <div class="pB">
+                <label for="eventDesc">Event Description:</label>
+                <input type="text" placeholder="Event Description" name="eventDesc" id="eventDesc" required value="{{ data[4] }}">
+            </div>
+            <input type="submit" id="button3" value="Confirm Edit">
+        </form>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

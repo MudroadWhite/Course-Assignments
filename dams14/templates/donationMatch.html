@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Match</title>
+
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <ul>
+            {% if session['login'] == True %}
+            <li role="presentation"><a href="/logout" id="logout">Logout</a>
+            </li>
+            <li role="presentation"  id="dash_button"><a href="/showDash">Dashboard</a>
+            </li>
+            {% else %}
+            <li role="presentation"><a href="/showSignIn" id="signin">Sign In</a>
+            </li>
+            <li role="presentation"  id="button"><a href="/showSignUp">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="mainContent" >
+        <h1 align="center">Match Donations</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="{{category}}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <div class="pB" align="center">
+                <label for="donation">Donations: (id zip amount humanRes materials)</label>
+                <select name="donation" id="donation" class="dropDown">
+                    {% for row in data1 %}
+                    <option>{{ row[0] }}, {{ row[1] }} {{ row[2] }} {{ row[3] }} {{ row[4] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="table">
+                <table id="openRequests">
+                    <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Zipcode</th>
+                        <th>Amount Requested (Dollars)</th>
+                        <th>Materials Requested</th>
+                        <th>Human Resources</th>
+                        <th>Select</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data2 %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td><input type="radio" id="{{ row[0] }}, {{ row[1] }} {{ row[2] }} {{ row[3] }} {{ row[4] }}"
+                                   name="request" value="{{ row[0] }}, {{ row[1] }} {{ row[2] }} {{ row[3] }} {{ row[4] }}" size="10px"> </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <input type="submit" id="button3" value="Match Donation">
+        </form>
+        <br><br><br>
+        <a href="showDash" id="eventButton">Return to Dashboard</a>
+        <br><br><br>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

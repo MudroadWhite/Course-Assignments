@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+            <ul>
+                {% if session['login'] == True %}
+                    <li role="presentation"><a href="logout" id="logout">Logout</a>
+                    </li>
+                    <li role="presentation"  id="dash_button"><a href="showDash">Dashboard</a>
+                    </li>
+                {% else %}
+                    <li role="presentation" id="signin"><a href="showSignIn">Sign In</a>
+                    </li>
+                    <li role="presentation" id="button"><a href="showSignUp">Sign Up</a>
+                    </li>
+                {% endif %}
+            </ul>
+    </div>
+
+    <div class="mainContent">
+        <h1>Welcome to Disaster Assistance Management System</h1>
+        <h3>Founded 2021</h3>
+        <ul>
+            <li>DAMS is a partially automated system that allows individuals to request for aid and respond
+            to natural and man-made disasters around the globe.</li>
+            <li>To sign up, <a href="showSignUp">click here</a>.</li>
+            <li>You may register as a requester if you have experienced a disaster and are in need of aid.
+                To request for aid, you can navigate to your dashboard.</li>
+            <li>You may also register as a responder. To respond to a request for aid, you can click below
+            to see all current emergencies or search our database by keyword.</li>
+            <li>You may also make a pledge as a responder by navigating to your dashboard.</li>
+            <li>Requests and responses will be automatically matched where possible, and also manually
+            matched by our dedicated team of administrators.</li>
+        </ul>
+        <div id="button2"><a href="showSearchPage">Search Database</a></div>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; DAMS 2021</p>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+Admin account:
+email: admin@mail.com
+psw: admin
+
+Recipient Account:
+email: recipient@mail.com
+psw: myPass1234
+
+Donor Account:
+email: donor@mail.com
+psw: myPass1234
+
+Base Table Entries:
+Requests:
+email: recipient@mail.com, eventID: 1
+
+Events:
+id: 1 Title: *any*
+id: 5 Title: Test
