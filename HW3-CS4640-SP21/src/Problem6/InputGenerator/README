@@ -1,0 +1,23 @@
+**** THIS IS A UTILITY FOR GENERATING THE INPUT FILE FOR PROBLEM 6 ****
+
+(1) To compile and generate an executable, type the following (without quotes) in the terminal:
+
+`make`
+
+(2) After step 1, you will have an executable called `inputGen` in this folder. 
+
+(3) To generate an input, you should type in the following command (without quotes) in the terminal:
+
+`./inputGen -n 10 -s 1026767 -o n10inputfile.in`
+
+This will generate an input file named `n10inputfile.in` containing 10 records. The number followed after the `-s` flag tells you what seed to use for the random number generator. 
+
+If you want to generate an input file named `n100records.in` containing 100 records while using 99999 as the random number generator seed then you should type in the following (without quotes) in the terminal: 
+
+
+`./inputGen -n 100 -s 99999 -o n100records.in`
+ 
+ 
+(* NOTE THAT, the generated input file is a binary file so if you open it with a text editor you are going to see garbage. Please do not be alarmed by it. *)
+
+	

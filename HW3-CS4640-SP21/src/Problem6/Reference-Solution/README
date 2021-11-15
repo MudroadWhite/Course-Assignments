@@ -1,0 +1,11 @@
+**** THIS IS THE CORRECT IMPLEMENTATION FOR PROBLEM 6 ****
+
+(1) To compile and generate an executable for the input viewer, type the following (without quotes) in the terminal:
+
+`make`
+
+(2) After step 1, you will have an executable called `inputSorter` in this folder. 
+
+(3) To sort an input file named `n100records.in` and to store the sorted records in an output folder called `n100records.out`, you should type in the following 
+
+`./inputSorted -i n100records.in -o n100records.out`
